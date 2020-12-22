@@ -1,10 +1,13 @@
 /**
  * node
  */
-public class node {
+class Node {
+    int x, y;
+    boolean value;
 
-    public int test(){
-        System.out.println("this is a test");
-        return 5;
-    }
+	Node(int x, int y, boolean value) {
+		this.x = x;
+		this.y = y;
+		this.value = value;
+	}
 }
