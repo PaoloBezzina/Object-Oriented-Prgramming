@@ -10,42 +10,39 @@ NW | NE
 SW | SE
 */
 
-public class Quad {
+public class runner {
 
     public static void main (String [] args){
 
         char[][] TXTarr = new char[4][8];
-        boolean[][] CSVarr = new boolean[4][8];
+        Node[][] CSVarr = new Node[4][8];
 
         readTextFile(TXTarr,"object-oriented-programming-assignment/Task1/test.txt");
         print2D(TXTarr);
 
         readCSVFile(CSVarr,"object-oriented-programming-assignment/Task1/test.csv");
-        printCSV(CSVarr);
+        printBool(CSVarr);
     }
 
-    public static void readCSVFile(boolean[][] arr, String fileName){
+    public static void readCSVFile(Node[][] arr, String fileName){
 
         try{  
             //setting which file should be read
             FileInputStream file = new FileInputStream(fileName);
 
             //initialising scanner for file
-            Scanner sc = new Scanner(file); 
-
-            int lineNum = 0;
+            Scanner sc = new Scanner(file);
 
             //checks if there is another line to be read 
             while(sc.hasNextLine()){
 
                 String line = sc.nextLine();
 
-                System.out.println(line);
+                //System.out.println(line);
 
                 String[]tokens = line.split(",");
-                arr[Integer.parseInt(tokens[0])][Integer.parseInt(tokens[1])] = true;
+                arr[Integer.parseInt(tokens[0])-1][Integer.parseInt(tokens[1])-1] = true;
 
-                lineNum++;
             }  
                 sc.close();
 
@@ -97,7 +94,7 @@ public class Quad {
         } 
     }
 
-    public static void printCSV(boolean array[][]){
+    public static void printBool(Node array[][]){
 
         // Loop through all rows 
         for (int i = 0; i < array.length; i++){

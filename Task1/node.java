@@ -9,5 +9,10 @@ class Node {
 		this.x = x;
 		this.y = y;
 		this.value = value;
-	}
+    }
+    
+    Node(){
+        this.x = 0;
+        this.y = 0;
+        this.value = false;
 }
