@@ -1,15 +1,9 @@
 /**
  * node
  */
-class Node {
-    public int x, y;
-    public boolean value;
-
-	Node(int x, int y, boolean value) {
-		this.x = x;
-		this.y = y;
-		this.value = value;
-    }
+public class Node {
+    private int x, y;
+    private boolean value;
     
     Node(){
         this.x = 0;
@@ -17,6 +11,11 @@ class Node {
         this.value = false;
     }
 
+	Node(int x, int y, boolean value) {
+		this.x = x;
+		this.y = y;
+		this.value = value;
+    }
 
     public void setX(int x){
         this.x = x;
@@ -26,8 +25,19 @@ class Node {
         this.y = y;
     }
 
-    public boolean getValue(){
+    public void setValue(boolean value){
+        this.value = value;
+    }
 
+    public int getX(){
+        return this.x;
+    }
+
+    public int getY(){
+        return this.y;
+    }
+
+    public boolean getValue(){
         return this.value;
     }
 }

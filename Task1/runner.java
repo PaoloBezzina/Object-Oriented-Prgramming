@@ -46,10 +46,11 @@ public class runner {
                 
                 System.out.println(yValue);              
                 System.out.println(xValue);
+                System.out.println(arr[yValue][xValue].getValue());
                 
                 arr[yValue][xValue].setX(xValue);
                 arr[yValue][xValue].setY(yValue);
-                arr[yValue][xValue].value = true;
+                arr[yValue][xValue].setValue(true);
 
             }  
                 sc.close();
