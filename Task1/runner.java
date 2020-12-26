@@ -21,7 +21,7 @@ public class runner {
         print2D(TXTarr);
 
         readCSVFile(CSVarr,"object-oriented-programming-assignment/Task1/test.csv");
-        printBool(CSVarr);
+        printNode(CSVarr);
     }
 
     public static void readCSVFile(Node[][] arr, String fileName){
@@ -38,10 +38,18 @@ public class runner {
 
                 String line = sc.nextLine();
 
-                //System.out.println(line);
+                System.out.println(line);
 
                 String[]tokens = line.split(",");
-                arr[Integer.parseInt(tokens[0])-1][Integer.parseInt(tokens[1])-1] = true;
+                int yValue = Integer.parseInt(tokens[0])-1;
+                int xValue = Integer.parseInt(tokens[1])-1;
+                
+                System.out.println(yValue);              
+                System.out.println(xValue);
+                
+                arr[yValue][xValue].setX(xValue);
+                arr[yValue][xValue].setY(yValue);
+                arr[yValue][xValue].value = true;
 
             }  
                 sc.close();
@@ -94,14 +102,14 @@ public class runner {
         } 
     }
 
-    public static void printBool(Node array[][]){
+    public static void printNode(Node array[][]){
 
         // Loop through all rows 
         for (int i = 0; i < array.length; i++){
 
             // Loop through all elements of current row 
             for (int j = 0; j < array[i].length; j++){
-                System.out.print(array[i][j]);
+                System.out.print(array[i][j].getValue());
             }
             
             System.out.println();
