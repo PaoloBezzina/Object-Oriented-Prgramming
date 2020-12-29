@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class QuadTree {
 
-    final int MAX_CAPACITY = 4;
+    final int MAX_NODES = 4;
     int level = 0;
     List<Node> nodes;
     QuadTree nW = null;
@@ -26,7 +26,7 @@ public class QuadTree {
 		}
 
 		Node node = new Node(x, y, value);
-		if (nodes.size() < MAX_CAPACITY) {
+		if (nodes.size() < MAX_NODES) {
 			nodes.add(node);
 			return;
 		}
@@ -45,7 +45,7 @@ public class QuadTree {
 		else if (this.sE.bound.inRange(x, y))
 			this.sE.insert(x, y, value);
 		else
-			System.out.printf("ERROR : Unhandled partition %d %d", x, y);
+			System.out.printf("ERROR : Unhandled partition %d %d ", x, y);
     }
     
     void split() {
@@ -124,7 +124,7 @@ public class QuadTree {
     public static void readTextFile(QuadTree tree, String fileName) {
 
         char[][] temp;
-        String line;
+        String[] lines = new String[8];
 
         try {
             // setting which file should be read
@@ -136,18 +136,29 @@ public class QuadTree {
             int lineNum = 0;
 
             // checks if there is another line to be read
-            while (sc.hasNextLine()) {
-
-                line = sc.nextLine();
+            while(sc.hasNextLine()) {
+                System.out.println("number of lines");
+                lines[lineNum] = sc.nextLine();
                 lineNum++;
             }
 
             temp = new char[lineNum][];
             
             for(int i = 0; i < temp.length; i++){
-                temp[i] = sc.nextLine().toCharArray();
+                System.out.println(lines[i]);
+                temp[i] = lines[i].toCharArray();
             }
-
+            
+            for (int yValue = 0; yValue < temp.length; yValue++) {
+                for (int xValue = 0; xValue < temp[yValue].length; xValue++) {
+                    if(temp[yValue][xValue] == 'T'){
+                        System.out.println("x: " + xValue + ", y: " + yValue + ", Value: " + temp[yValue][xValue]);
+                        tree.insert(xValue, yValue, true);
+                        System.out.println("create node");
+                    }
+                }
+            }
+            
             sc.close();
 
         } catch (IOException e) {
@@ -155,11 +166,11 @@ public class QuadTree {
         }
     }
     public static void main(String args[]) {
-        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 8, 4));
+        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 10, 10));
         
-        readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
+        //readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
 
-        //readCSVFile(tree,"object-oriented-programming-assignment/Task1/test.csv");
+        readCSVFile(tree,"object-oriented-programming-assignment/Task1/test.csv");
 
 		//Traveling the graph
 		QuadTree.dfs(tree);
