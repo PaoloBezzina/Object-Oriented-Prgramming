@@ -2,16 +2,11 @@
  * node
  */
 public class Node {
-    boolean leaf;
-    Node[] children;
 
     int x, y;
     boolean value;
 
     Node() {
-        this.children = new Node[4];
-        this.leaf = false;
-
         this.x = 0;
         this.y = 0;
         this.value = false;

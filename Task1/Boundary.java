@@ -21,7 +21,6 @@ public class Boundary {
     public Boundary(int minX, int minY, int maxX, int maxY) {
         super();
         
-        //Storing two diagonal points
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;

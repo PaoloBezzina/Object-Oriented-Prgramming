@@ -7,6 +7,7 @@ public class QuadTree {
 
     final int MAX_NODES = 4;
     int level = 0;
+    boolean leaf = false;
     List<Node> nodes;
     QuadTree nW = null;
     QuadTree nE = null;
@@ -21,6 +22,7 @@ public class QuadTree {
     }
 
     void insert(int x, int y, boolean value) {
+        System.out.println("inserting in: "+ x +", "+ y);
 		if (!this.bound.inRange(x, y)) {
 			return;
 		}
@@ -36,34 +38,31 @@ public class QuadTree {
 		}
 
 		// Check coordinates belongs to which partition 
-		if (this.nW.bound.inRange(x, y))
+		if (this.nW.bound.inRange(x, y)){
 			this.nW.insert(x, y, value);
-		else if (this.nE.bound.inRange(x, y))
+        }else if (this.nE.bound.inRange(x, y)){
 			this.nE.insert(x, y, value);
-		else if (this.sW.bound.inRange(x, y))
+        }else if (this.sW.bound.inRange(x, y)){
 			this.sW.insert(x, y, value);
-		else if (this.sE.bound.inRange(x, y))
+        }else if (this.sE.bound.inRange(x, y)){
 			this.sE.insert(x, y, value);
-		else
-			System.out.printf("ERROR : Unhandled partition %d %d ", x, y);
+        }else{
+            System.out.printf("ERROR : Unhandled partition %d %d ", x, y);
+        }
     }
-    
-    void split() {
-		int xOffset = this.bound.getminX()
-				+ (this.bound.getxMax() - this.bound.getminX()) / 2;
-		int yOffset = this.bound.getminY()
-				+ (this.bound.getmaxY() - this.bound.getminY()) / 2;
 
-		nW = new QuadTree(this.level + 1, new Boundary(
-				this.bound.getminX(), this.bound.getminY(), xOffset,
-				yOffset));
-		nE = new QuadTree(this.level + 1, new Boundary(xOffset,
-				this.bound.getminY(), xOffset, yOffset));
-		sW = new QuadTree(this.level + 1, new Boundary(
-				this.bound.getminX(), xOffset, xOffset,
-				this.bound.getmaxY()));
-		sE = new QuadTree(this.level + 1, new Boundary(xOffset, yOffset,
-				this.bound.getxMax(), this.bound.getmaxY()));
+    void split() {
+		int xOffset = this.bound.getminX() + (this.bound.getxMax() - this.bound.getminX()) / 2;
+		int yOffset = this.bound.getminY() + (this.bound.getmaxY() - this.bound.getminY()) / 2;
+
+		nW = new QuadTree(this.level + 1, new Boundary(this.bound.getminX(), this.bound.getminY(), xOffset,	yOffset));
+        nE = new QuadTree(this.level + 1, new Boundary(xOffset,	this.bound.getminY(), this.bound.getminX(), yOffset));
+        //error apparently (114) - northEast = new QuadTree(this.level + 1, new Boundry(xOffset, this.boundry.getyMin(), this.boundry.getxMax(), yOffset));
+
+        sW = new QuadTree(this.level + 1, new Boundary(this.bound.getminX(), yOffset, xOffset,this.bound.getmaxY()));
+        //error apparently (114) - southWest = new QuadTree(this.level + 1, new Boundry(this.boundry.getxMin(), yOffset, xOffset, this.boundry.getyMax()));
+        
+		sE = new QuadTree(this.level + 1, new Boundary(xOffset, yOffset,this.bound.getxMax(), this.bound.getmaxY()));
     }
 
     /* Traveling the Graph using Depth First Search*/
@@ -80,7 +79,8 @@ public class QuadTree {
 			System.out.printf(" \n\t  x=%d y=%d", node.x, node.y);
 		}
 		if (tree.nodes.size() == 0) {
-			System.out.printf(" \n\t  Leaf Node.");
+            System.out.printf(" \n\t  Leaf Node.");
+            tree.leaf = true;
         }
         
 		dfs(tree.nW);
@@ -137,7 +137,6 @@ public class QuadTree {
 
             // checks if there is another line to be read
             while(sc.hasNextLine()) {
-                System.out.println("number of lines");
                 lines[lineNum] = sc.nextLine();
                 lineNum++;
             }
@@ -145,15 +144,19 @@ public class QuadTree {
             temp = new char[lineNum][];
             
             for(int i = 0; i < temp.length; i++){
-                System.out.println(lines[i]);
                 temp[i] = lines[i].toCharArray();
             }
             
             for (int yValue = 0; yValue < temp.length; yValue++) {
                 for (int xValue = 0; xValue < temp[yValue].length; xValue++) {
                     if(temp[yValue][xValue] == 'T'){
-                        System.out.println("x: " + xValue + ", y: " + yValue + ", Value: " + temp[yValue][xValue]);
+                        System.out.println("\nx: " + xValue + ", y: " + yValue + ", Value: " + temp[yValue][xValue]);
                         tree.insert(xValue, yValue, true);
+                        System.out.println("create node");
+                    }
+                    else if(temp[yValue][xValue] == 'F'){
+                        System.out.println("\nx: " + xValue + ", y: " + yValue + ", Value: " + temp[yValue][xValue]);
+                        tree.insert(xValue, yValue, false);
                         System.out.println("create node");
                     }
                 }
@@ -166,11 +169,11 @@ public class QuadTree {
         }
     }
     public static void main(String args[]) {
-        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 10, 10));
+        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 4, 4));
         
-        //readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
+        readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
 
-        readCSVFile(tree,"object-oriented-programming-assignment/Task1/test.csv");
+        //readCSVFile(tree,"object-oriented-programming-assignment/Task1/test.csv");
 
 		//Traveling the graph
 		QuadTree.dfs(tree);
