@@ -13,17 +13,17 @@ public class QuadTree {
     QuadTree nE = null;
     QuadTree sW = null;
     QuadTree sE = null;
-    Boundary bound;
+    Boundary boundary;
 
-    QuadTree(int level, Boundary bound) {
+    QuadTree(int level, Boundary boundary) {
         this.level = level;
         nodes = new ArrayList<Node>();
-        this.bound = bound;
+        this.boundary = boundary;
     }
 
     void insert(int x, int y, boolean value) {
         System.out.println("inserting in: "+ x +", "+ y);
-		if (!this.bound.inRange(x, y)) {
+		if (!this.boundary.inRange(x, y)) {
 			return;
 		}
 
@@ -38,13 +38,13 @@ public class QuadTree {
 		}
 
 		// Check coordinates belongs to which partition 
-		if (this.nW.bound.inRange(x, y)){
+		if (this.nW.boundary.inRange(x, y)){
 			this.nW.insert(x, y, value);
-        }else if (this.nE.bound.inRange(x, y)){
+        }else if (this.nE.boundary.inRange(x, y)){
 			this.nE.insert(x, y, value);
-        }else if (this.sW.bound.inRange(x, y)){
+        }else if (this.sW.boundary.inRange(x, y)){
 			this.sW.insert(x, y, value);
-        }else if (this.sE.bound.inRange(x, y)){
+        }else if (this.sE.boundary.inRange(x, y)){
 			this.sE.insert(x, y, value);
         }else{
             System.out.printf("ERROR : Unhandled partition %d %d ", x, y);
@@ -52,17 +52,16 @@ public class QuadTree {
     }
 
     void split() {
-		int xOffset = this.bound.getminX() + (this.bound.getxMax() - this.bound.getminX()) / 2;
-		int yOffset = this.bound.getminY() + (this.bound.getmaxY() - this.bound.getminY()) / 2;
+		int xOffset = this.boundary.getminX() + (this.boundary.getxMax() - this.boundary.getminX()) / 2;
+		int yOffset = this.boundary.getminY() + (this.boundary.getmaxY() - this.boundary.getminY()) / 2;
 
-		nW = new QuadTree(this.level + 1, new Boundary(this.bound.getminX(), this.bound.getminY(), xOffset,	yOffset));
-        nE = new QuadTree(this.level + 1, new Boundary(xOffset,	this.bound.getminY(), this.bound.getminX(), yOffset));
-        //error apparently (114) - northEast = new QuadTree(this.level + 1, new Boundry(xOffset, this.boundry.getyMin(), this.boundry.getxMax(), yOffset));
-
-        sW = new QuadTree(this.level + 1, new Boundary(this.bound.getminX(), yOffset, xOffset,this.bound.getmaxY()));
-        //error apparently (114) - southWest = new QuadTree(this.level + 1, new Boundry(this.boundry.getxMin(), yOffset, xOffset, this.boundry.getyMax()));
+        nW = new QuadTree(this.level + 1, new Boundary(this.boundary.getminX(), this.boundary.getminY(), xOffset,	yOffset));
         
-		sE = new QuadTree(this.level + 1, new Boundary(xOffset, yOffset,this.bound.getxMax(), this.bound.getmaxY()));
+        nE = new QuadTree(this.level + 1, new Boundary(xOffset,	this.boundary.getminY(), this.boundary.getminX(), yOffset));
+
+        sW = new QuadTree(this.level + 1, new Boundary(this.boundary.getminX(), yOffset, xOffset,this.boundary.getmaxY()));
+        
+		sE = new QuadTree(this.level + 1, new Boundary(xOffset, yOffset,this.boundary.getxMax(), this.boundary.getmaxY()));
     }
 
     /* Traveling the Graph using Depth First Search*/
@@ -72,8 +71,8 @@ public class QuadTree {
         }
 
 		System.out.printf("\nLevel = %d [X1=%d Y1=%d] \t[X2=%d Y2=%d] ",
-				tree.level, tree.bound.getminX(), tree.bound.getminY(),
-				tree.bound.getxMax(), tree.bound.getmaxY());
+				tree.level, tree.boundary.getminX(), tree.boundary.getminY(),
+				tree.boundary.getxMax(), tree.boundary.getmaxY());
 
 		for (Node node : tree.nodes) {
 			System.out.printf(" \n\t  x=%d y=%d", node.x, node.y);

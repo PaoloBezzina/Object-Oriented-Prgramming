@@ -2,6 +2,16 @@ public class Boundary {
 
     int minX, minY, maxX, maxY;
 
+    public Boundary(int minX, int minY, int maxX, int maxY) {
+        
+        super();
+        
+        this.minX = minX;
+        this.minY = minY;
+        this.maxX = maxX;
+        this.maxY = maxY;
+    }
+
     public int getminX() {
         return minX;
     }
@@ -16,15 +26,6 @@ public class Boundary {
 
     public int getmaxY() {
         return maxY;
-    }
-
-    public Boundary(int minX, int minY, int maxX, int maxY) {
-        super();
-        
-        this.minX = minX;
-        this.minY = minY;
-        this.maxX = maxX;
-        this.maxY = maxY;
     }
 
     public boolean inRange(int x, int y) {
