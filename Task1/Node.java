@@ -1,7 +1,7 @@
 /**
  * node
  */
-public class Node {
+public class Node{
 
     int x, y;
     boolean value;

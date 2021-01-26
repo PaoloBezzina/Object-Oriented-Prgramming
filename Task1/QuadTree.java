@@ -170,9 +170,11 @@ public class QuadTree {
     public static void main(String args[]) {
         QuadTree tree = new QuadTree(1, new Boundary(0, 0, 4, 4));
         
-        readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
+        //readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
+        readTextFile(tree,"Task1/test.txt");
 
         //readCSVFile(tree,"object-oriented-programming-assignment/Task1/test.csv");
+        //readCSVFile(tree,"Task1/test.csv);
 
 		//Traveling the graph
 		QuadTree.dfs(tree);
