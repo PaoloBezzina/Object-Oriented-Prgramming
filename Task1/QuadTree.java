@@ -168,7 +168,7 @@ public class QuadTree {
         }
     }
     public static void main(String args[]) {
-        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 4, 4));
+        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 50, 50));
         
         readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
 
