@@ -32,6 +32,6 @@ public class Banking_System {
     }
 
     public void addAccount(int, int, int[], int, double, String, String){
-        
+        Account acc = new Account(accNo, )
     }
 }
