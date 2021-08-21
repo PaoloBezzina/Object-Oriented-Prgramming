@@ -17,10 +17,10 @@ public class runner {
         char[][] TXTarr = new char[4][8];
         boolean[][] CSVarr = new boolean[4][8];
 
-        readTextFile(TXTarr, "object-oriented-programming-assignment/Task1/test.txt");
+        readTextFile(TXTarr, "Task1/test.txt");
         print2D(TXTarr);
 
-        readCSVFile(CSVarr, "object-oriented-programming-assignment/Task1/test.csv");
+        readCSVFile(CSVarr, "Task1/test.csv");
         printNode(CSVarr);
 
     }
