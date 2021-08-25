@@ -22,7 +22,7 @@ public class QuadTree {
     }
 
     void insert(int x, int y, boolean value) {
-        System.out.println("inserting in: " + x + ", " + y);
+        // System.out.println("inserting in: " + x + ", " + y);
         if (!this.boundary.inRange(x, y)) {
             return;
         }
@@ -48,7 +48,7 @@ public class QuadTree {
         } else if (this.sE.boundary.inRange(x, y)) {
             this.sE.insert(x, y, value);
         } else {
-            System.out.printf("ERROR : Unhandled partition %d %d ", x, y);
+            System.out.printf("ERROR : Unhandled partition %d %d \n", x, y);
         }
     }
 
@@ -174,11 +174,9 @@ public class QuadTree {
     public static void main(String args[]) {
         QuadTree tree = new QuadTree(1, new Boundary(0, 0, 50, 50));
 
-        // readTextFile(tree,"object-oriented-programming-assignment/Task1/test.txt");
         readTextFile(tree, "Task1/test.txt");
 
-        // readCSVFile(tree,"object-oriented-programming-assignment/Task1/test.csv");
-        // readCSVFile(tree,"Task1/test.csv);
+        // readCSVFile(tree,"Task1/test.csv");
 
         // Traveling the graph
         QuadTree.dfs(tree);

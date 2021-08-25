@@ -12,20 +12,32 @@ SW | SE
 
 public class runner {
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
 
-        char[][] TXTarr = new char[4][8];
-        boolean[][] CSVarr = new boolean[4][8];
+        char[][] TXTarr = new char[8][8];
+        boolean[][] CSVarr = new boolean[8][8];
 
-        readTextFile(TXTarr, "Task1/test.txt");
-        print2D(TXTarr);
+        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 50, 50));
 
-        readCSVFile(CSVarr, "Task1/test.csv");
-        printNode(CSVarr);
+        System.out.println("Text File - QuadTree");
+        // getTextFile(TXTarr, "Task1/test.txt");
+        getTextFile(TXTarr, "test.txt");
+        printTextQuad(TXTarr);
+        // QuadTree.readTextFile(tree, "Task1/test.txt");
+        QuadTree.readTextFile(tree, "test.txt");
 
+        System.out.println("CSV File - QuadTree");
+        // getCSVFile(CSVarr, "Task1/test.csv");
+        getCSVFile(CSVarr, "test.csv");
+        printCSVQuad(CSVarr);
+        // QuadTree.readCSVFile(tree, "Task1/test.csv");
+        QuadTree.readCSVFile(tree, "test.csv");
+
+        // Traveling the graph
+        QuadTree.dfs(tree);
     }
 
-    public static void readCSVFile(boolean[][] arr, String fileName) {
+    public static void getCSVFile(boolean[][] arr, String fileName) {
 
         try {
             // setting which file should be read
@@ -39,7 +51,7 @@ public class runner {
 
                 String line = sc.nextLine();
 
-                System.out.println(line);
+                // System.out.println(line);
 
                 String[] tokens = line.split(",");
                 int yValue = Integer.parseInt(tokens[0]) - 1;
@@ -55,7 +67,7 @@ public class runner {
         }
     }
 
-    public static void readTextFile(char[][] arr, String fileName) {
+    public static void getTextFile(char[][] arr, String fileName) {
 
         try {
             // setting which file should be read
@@ -84,28 +96,28 @@ public class runner {
         }
     }
 
-    public static void print2D(char array[][]) {
+    public static void printTextQuad(char array[][]) {
 
         // Loop through all rows
         for (int i = 0; i < array.length; i++) {
 
             // Loop through all elements of current row
             for (int j = 0; j < array[i].length; j++) {
-                System.out.print(array[i][j]);
+                System.out.print(array[i][j] + "\t");
             }
 
             System.out.println();
         }
     }
 
-    public static void printNode(boolean array[][]) {
+    public static void printCSVQuad(boolean array[][]) {
 
         // Loop through all rows
         for (int i = 0; i < array.length; i++) {
 
             // Loop through all elements of current row
             for (int j = 0; j < array[i].length; j++) {
-                System.out.print(array[i][j]);
+                System.out.print(array[i][j] + "\t");
             }
 
             System.out.println();
