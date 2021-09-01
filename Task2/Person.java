@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Person {
     
     //int no;
@@ -41,7 +43,7 @@ public class Person {
 
     //Getters
     public String getID() {
-        return ID;
+        return id;
     }
     public String getName() {
         return name;

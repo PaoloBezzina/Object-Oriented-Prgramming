@@ -1,10 +1,10 @@
 public class Regular_User extends User{
     
-    //open account - requests open account
+    // TODO open account - requests open account
 
-    //close account - requests close account
+    // TODO close account - requests close account
 
-    //new card - requests new card
+    // TODO new card - requests new card
 
-    //cancel card - request cancel card
+    // TODO cancel card - request cancel card
 }

@@ -1,25 +1,23 @@
 import java.util.ArrayList;
 
-public class Account_Holder extends Person{
-    
-    //Array list of accounts
+public class Account_Holder extends Person {
+
+    // Array list of accounts
     ArrayList<Account> userAccounts = new ArrayList<Account>();
 
-    /*
-    get accounts(): ArrayList<Account>
-    init account(): void
-    add account(): void
-    view balance(int): void
-    view interest(int): void
-    withdraw money(int, double): void
-    deposit money(int, double): void
-    move money(int, double, int): void
-    directDebit(int, AccountHolder, double): void
-    display accounts(int): void
-    display account's cards(int): void
-    display account transactions(int): void
-    displayAllAccounts(): void
-    findAccount(int): Account
-    */
+    // TODO get accounts(): ArrayList<Account>
+    // TODO init account(): void
+    // TODO add account(): void
+    // TODO view balance(int): void
+    // TODO view interest(int): void
+    // TODO withdraw money(int, double): void
+    // TODO deposit money(int, double): void
+    // TODO move money(int, double, int): void
+    // TODO directDebit(int, AccountHolder, double): void
+    // TODO display accounts(int): void
+    // TODO display account's cards(int): void
+    // TODO display account transactions(int): void
+    // TODO displayAllAccounts(): void
+    // TODO findAccount(int): Account
 
 }

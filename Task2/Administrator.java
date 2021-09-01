@@ -1,10 +1,10 @@
-public class Administrator extends User{
-    
-    //approve open account - requests open account
+public class Administrator extends User {
 
-    //approve close account - requests close account
+    // TODO approve open account - requests open account
 
-    //approve new card - requests new card
+    // TODO approve close account - requests close account
 
-    //approve cancel card - request cancel card
+    // TODO approve new card - requests new card
+
+    // TODO approve cancel card - request cancel card
 }
