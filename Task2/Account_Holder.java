@@ -2,6 +2,11 @@ import java.util.ArrayList;
 
 public class Account_Holder extends Person {
 
+    public Account_Holder(String id, String name, String surname, String title, String role, String gender) {
+        super(id, name, surname, title, role, gender);
+        //TODO Auto-generated constructor stub
+    }
+
     // Array list of accounts
     ArrayList<Account> userAccounts = new ArrayList<Account>();
 
