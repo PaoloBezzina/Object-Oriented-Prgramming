@@ -1,3 +1,4 @@
+// can be abstract?
 public class Account {
 
     int accNo;
