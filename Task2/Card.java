@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.lang.Math;
 import java.util.Calendar;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -7,22 +8,23 @@ public class Card {
 
     String cardNo;
     Account account;
-    String owner;
+    String ownerName;
+    Account_Holder owner;
     int cvv;
-    String expiryDate;
+    String expiryDateString;
+    Date expiryDate;
 
     public Card(Account acc, String name) {
-        numberOfCards++;
         DateFormat dateFormat = new SimpleDateFormat("yy-mm");
         Calendar c = Calendar.getInstance();
         c.add(Calendar.YEAR, 4);
-        Date date = c.getTime();
-        expiryDate = dateFormat.format(date);
-        cvv = (Math.random() * (999) + 1);
-        cardNo = (Math.random() * (99999999) + 1);
-        cardNo += String.format("%04d", numberOfCards);
+        expiryDate = c.getTime();
+        expiryDateString = dateFormat.format(expiryDate);
+        cvv = (int) (Math.random() * (999) + 1);
+        cardNo = String.valueOf((Math.random() * (99999999) + 1));
+        cardNo += String.format("%04d", acc.bankCards.size());
         account = acc;
-        owner = name;
+        ownerName = acc.owners.get(0).getFullName(); // TODO - fix only gets the name of the first owner
     }
 
     public Account getAccount() {
@@ -37,14 +39,35 @@ public class Card {
         return cvv;
     }
 
-    public String getExpiryDate() {
-        return expiryDate;
+    public String getexpiryDateString() {
+        return expiryDateString;
     }
 
-    public AccountHolder getOwner() {
+    public Account_Holder getOwner() {
         return owner;
     }
 
-    // TODO 'check' ExpDate: String
-    // TODO displayCard(): void
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    boolean isValid() {
+        Calendar today = Calendar.getInstance();
+        Date todayDate = today.getTime();
+        if (todayDate.compareTo(this.expiryDate) <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    void displayCard() {
+        System.out.println("---------------------------");
+        System.out.println("Account :" + getAccount());
+        System.out.println("Card Number :" + getCardNo());
+        System.out.println("CVV :" + getCvv());
+        System.out.println("Expiry Date :" + getexpiryDateString());
+        System.out.println("Owner :" + getOwnerName());
+        System.out.println("---------------------------");
+    }
 }

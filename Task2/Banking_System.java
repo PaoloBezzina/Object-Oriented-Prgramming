@@ -9,6 +9,9 @@ public class Banking_System {
     ArrayList<Card> cards = new ArrayList<Card>();
     // boolean disabled;
 
+
+    // TODO addNewPerson(String id, String name, String surname, String title, String role, String gender): void
+    // TODO addAccount(int, int, int[], int, double, String, String): void
     // TODO displayAll(String): void
     // TODO checkIdNo(int, String): void
     // TODO assignAccount(int, int[]): void
@@ -27,13 +30,14 @@ public class Banking_System {
     // TODO moveMoney(int, int, int, double): void
     // TODO cont.....
 
+    /*     
     public void addNewPerson(String id, String name, String surname, String title, String role, String gender){
         Person person = new Person(id, name, surname, title, role, gender); // Creating a new object
         regularUsers.add(person); // Adding it to the list
     }
 
-    // FIXME Fix these problems
     public void addAccount(int, int, int[], int, double, String, String){
         Account acc = new Account(accNo, )
     }
+    */
 }

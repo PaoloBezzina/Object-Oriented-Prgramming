@@ -4,17 +4,40 @@ public class Account_Holder extends Person {
 
     public Account_Holder(String id, String name, String surname, String title, String role, String gender) {
         super(id, name, surname, title, role, gender);
-        //TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub
     }
 
     // Array list of accounts
     ArrayList<Account> userAccounts = new ArrayList<Account>();
 
-    // TODO get accounts(): ArrayList<Account>
-    // TODO init account(): void
-    // TODO add account(): void
-    // TODO view balance(int): void
-    // TODO view interest(int): void
+    ArrayList<Account> getAccounts() {
+        return userAccounts;
+    }
+
+    void initAccount() {
+        // TODO init account(): void
+        // create new account and add it to array list
+        // addAcount();
+    }
+
+    void addAcount() {
+        // TODO add account(): void
+        // add account to arraylist
+    }
+
+    void viewBalance() {
+        // TODO view balance(int): void
+        // get balance of all bank accounts linked to this account holder
+    }
+
+    void viewInterest(int accountId) {
+        System.out.println(userAccounts.get(accountId).getInterest());
+    }
+
+    void withdrawMoney(int accountId, double amount, String currency) {
+        userAccounts.get(accountId).withdraw(amount, currency);
+    }
+
     // TODO withdraw money(int, double): void
     // TODO deposit money(int, double): void
     // TODO move money(int, double, int): void
