@@ -1,6 +1,6 @@
 #include <iostream>
-/* #include <string>
-#include <math.h> */
+#include <math.h>
+#include <vector>
 
 std::string decimalToBinary(int n);
 

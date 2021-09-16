@@ -25,7 +25,7 @@ void test()
 
 int test2()
 {
-    myuint<1024> i(5);                  // creates a 1024-bit unsigned int '5'
-    myuint<2048> j = i << 1000 + 23;    // shifts it by 1000 bits and adds 23
-    return j.template convert_to<int>() // returns 23
+    myuint<2048> i(5);                   // creates a 1024-bit unsigned int '5'
+    myuint<2048> j = i << 1000 + 23;     // shifts it by 1000 bits and adds 23
+    return j.template convert_to<int>(); // returns 23
 }

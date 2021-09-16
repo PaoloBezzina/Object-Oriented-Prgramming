@@ -1,5 +1,3 @@
-#include <math.h>
-#include <vector>
 #include "myuint.hpp"
 
 /* Things to check:
