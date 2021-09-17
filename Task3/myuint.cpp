@@ -2,7 +2,7 @@
 
 /* Things to check:
  - Why calling the same method from a differnt "main.cpp" class results in an undefined reference error
- - Why an error is also given when trying to fit a smaller number into a larger on example (a myuint<1024> into a myuing<2048>)
+ - Try to fit a smaller number into a larger on example (a myuint<1024> into a myuing<2048>), which would make sense
  */
 
 // Converts a decimal number into a String made up of the binary convertion of the given number
@@ -364,6 +364,20 @@ type myuint<T>::convert_to()
 
 int main()
 {
+    myuint<1024> a = (13);
+    std::cout << a.getNumber() << std::endl;
+    std::cout << a.convert_to<int>() << std::endl;
+
+    myuint<1024> b(25000 * 2);
+    std::cout << b.getNumber() << std::endl;
+    std::cout << b.convert_to<int>() << std::endl;
+
+    std::cout << ((b<<1000)-b).convert_to<double>() << std::endl;
+    return 0;
+}
+
+/* int main()
+{
     myuint<1024> a = (40000);
     std::cout << a.getNumber() << std::endl;
     std::cout << a.convert_to<int>() << std::endl;
@@ -374,4 +388,4 @@ int main()
 
     std::cout << ((a * b) / 2).convert_to<int>() << std::endl;
     return 0;
-}
+} */

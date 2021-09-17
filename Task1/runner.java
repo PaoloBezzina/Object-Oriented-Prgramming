@@ -17,7 +17,7 @@ public class runner {
         char[][] TXTarr = new char[8][8];
         boolean[][] CSVarr = new boolean[8][8];
 
-        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 50, 50));
+        QuadTree tree = new QuadTree(1, new Boundary(0, 0, 8, 8));
 
         System.out.println("Text File - QuadTree");
         // getTextFile(TXTarr, "Task1/test.txt");
@@ -25,6 +25,9 @@ public class runner {
         printTextQuad(TXTarr);
         // QuadTree.readTextFile(tree, "Task1/test.txt");
         QuadTree.readTextFile(tree, "test.txt");
+
+        // Traveling the graph
+        QuadTree.dfs(tree);
 
         System.out.println("CSV File - QuadTree");
         // getCSVFile(CSVarr, "Task1/test.csv");
