@@ -1,4 +1,4 @@
-// can be abstract?
-public class Request {
-    
+public abstract class Request {
+
+    boolean approved = false;
 }

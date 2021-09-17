@@ -11,7 +11,6 @@ public class Account {
     boolean type; // t for current, f for savings
     float interest;
     String currency;
-    ArrayList<String> userAccounts = new ArrayList<String>();
     ArrayList<Account_Holder> owners = new ArrayList<Account_Holder>();
     ArrayList<Card> bankCards = new ArrayList<Card>();
 
@@ -23,6 +22,23 @@ public class Account {
         currencies.put("CAD", 1.49601);
         currencies.put("YEN", 129.26);
         currencies.put("CHF", 1.08582);
+    }
+
+    public Account(double balance, String currency, boolean type, ArrayList<Account_Holder> owners) {
+        setAccNo((int) ((Math.random() * (99999999) + 1))); // TODO - fix leaves possible duplicate accNo's
+        addAccountHolders(owners);
+        setBalance(balance);
+        setCurrency(currency);
+        setType(type);
+    }
+
+    public Account(double balance, String currency, boolean type, ArrayList<Account_Holder> owners, float interest) {
+        setAccNo((int) ((Math.random() * (99999999) + 1))); // TODO - fix leaves possible duplicate accNo's
+        addAccountHolders(owners);
+        setInterest(interest);
+        setBalance(balance);
+        setCurrency(currency);
+        setType(type);
     }
 
     public void setAccNo(int accNo) {
@@ -39,6 +55,24 @@ public class Account {
 
     public void setType(boolean type) {
         this.type = type;
+    }
+
+    public void setInterest(float interest) {
+        this.interest = interest;
+    }
+
+    public void addAccountHolders(ArrayList<Account_Holder> users) {
+        for (Account_Holder account_Holder : users) {
+            this.owners.add(account_Holder);
+        }
+    }
+
+    public void addAccountHolder(Account_Holder user) {
+        this.owners.add(user);
+    }
+
+    public void removeAccountHolder(Account_Holder user) {
+        this.owners.remove(user);
     }
 
     public int getAccNo() {
@@ -63,10 +97,6 @@ public class Account {
 
     public ArrayList<Account_Holder> getOwners() {
         return owners;
-    }
-
-    public ArrayList<String> getUserAccounts() {
-        return userAccounts;
     }
 
     void viewBalance() {

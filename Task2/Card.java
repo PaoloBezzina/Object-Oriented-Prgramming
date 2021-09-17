@@ -21,7 +21,7 @@ public class Card {
         expiryDate = c.getTime();
         expiryDateString = dateFormat.format(expiryDate);
         cvv = (int) (Math.random() * (999) + 1);
-        cardNo = String.valueOf((Math.random() * (99999999) + 1));
+        cardNo = String.valueOf((Math.random() * (99999999) + 1)); // TODO - fix leaves possible duplicate cardNo's
         cardNo += String.format("%04d", acc.bankCards.size());
         account = acc;
         ownerName = acc.owners.get(0).getFullName(); // TODO - fix only gets the name of the first owner

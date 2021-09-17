@@ -18,11 +18,14 @@ public class Account_Holder extends Person {
         // TODO init account(): void
         // create new account and add it to array list
         // addAcount();
+        //Request_Open_Account
     }
 
-    void addAcount() {
+    void addAcount(int accNo) {
         // TODO add account(): void
         // add account to arraylist
+        Banking_System.accounts.get();
+        userAccounts.add();
     }
 
     void viewBalance() {
