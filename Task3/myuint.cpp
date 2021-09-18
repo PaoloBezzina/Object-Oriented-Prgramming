@@ -364,28 +364,14 @@ type myuint<T>::convert_to()
 
 int main()
 {
-    myuint<1024> a = (13);
+    myuint<1024> a(5); // creates a 1024-bit unsigned int '5'
     std::cout << a.getNumber() << std::endl;
     std::cout << a.convert_to<int>() << std::endl;
 
-    myuint<1024> b(25000 * 2);
-    std::cout << b.getNumber() << std::endl;
-    std::cout << b.convert_to<int>() << std::endl;
-
-    std::cout << ((b<<1000)-b).convert_to<double>() << std::endl;
-    return 0;
-}
-
-/* int main()
-{
-    myuint<1024> a = (40000);
-    std::cout << a.getNumber() << std::endl;
-    std::cout << a.convert_to<int>() << std::endl;
-
-    myuint<1024> b(3);
+    myuint<1024> b = a << 1000 + 23; // shifts it by 1000 bits and adds 23
     std::cout << b.getNumber() << std::endl;
     std::cout << b.convert_to<int>() << std::endl;
 
     std::cout << ((a * b) / 2).convert_to<int>() << std::endl;
     return 0;
-} */
+}

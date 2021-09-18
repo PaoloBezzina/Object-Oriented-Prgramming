@@ -4,7 +4,6 @@ public class Account_Holder extends Person {
 
     public Account_Holder(String id, String name, String surname, String title, String role, String gender) {
         super(id, name, surname, title, role, gender);
-        // TODO Auto-generated constructor stub
     }
 
     // Array list of accounts
@@ -14,23 +13,42 @@ public class Account_Holder extends Person {
         return userAccounts;
     }
 
-    void initAccount() {
-        // TODO init account(): void
-        // create new account and add it to array list
-        // addAcount();
-        //Request_Open_Account
+    // create new account and add it to array list
+    void initAccount(double balance, String currency, boolean type, ArrayList<Account_Holder> owners) {
+        Account newAccount = new Account(balance, currency, type, owners);
+        userAccounts.add(newAccount);
     }
 
+    // add account to arraylist
     void addAcount(int accNo) {
-        // TODO add account(): void
-        // add account to arraylist
-        Banking_System.accounts.get();
-        userAccounts.add();
+        userAccounts.add(userAccounts.get(accNo));
     }
 
+    // get balance of all bank accounts linked to this account holder
     void viewBalance() {
-        // TODO view balance(int): void
-        // get balance of all bank accounts linked to this account holder
+        System.out.println("---------------------------");
+        for (Account account : userAccounts) {
+            System.out.println(account.getAccNo() + ": " + account.getBalance());
+        }
+        System.out.println("---------------------------");
+    }
+
+    // get all bank accounts linked to this account holder
+    void viewAccounts() {
+        System.out.println("---------------------------");
+        for (Account account : userAccounts) {
+            System.out.println(account.getAccNo());
+        }
+        System.out.println("---------------------------");
+    }
+
+    // get all bank cards linked to this account holder
+    void viewCards() {
+        System.out.println("---------------------------");
+        for (Account account : userAccounts) {
+            System.out.println(account.getAccNo() + ": " + account.getbankCards());
+        }
+        System.out.println("---------------------------");
     }
 
     void viewInterest(int accountId) {
@@ -41,14 +59,12 @@ public class Account_Holder extends Person {
         userAccounts.get(accountId).withdraw(amount, currency);
     }
 
-    // TODO withdraw money(int, double): void
-    // TODO deposit money(int, double): void
-    // TODO move money(int, double, int): void
-    // TODO directDebit(int, AccountHolder, double): void
-    // TODO display accounts(int): void
-    // TODO display account's cards(int): void
-    // TODO display account transactions(int): void
-    // TODO displayAllAccounts(): void
-    // TODO findAccount(int): Account
+    void depositMoney(int accountId, double amount, String currency) {
+        userAccounts.get(accountId).deposit(amount, currency);
+    }
 
+    void transferMoney(int accountId, int recipientID, double amount, String currency) {
+        userAccounts.get(accountId).withdraw(amount, currency);
+        userAccounts.get(recipientID).deposit(amount, currency);
+    }
 }

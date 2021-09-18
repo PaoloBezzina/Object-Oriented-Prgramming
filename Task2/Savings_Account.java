@@ -8,5 +8,4 @@ public class Savings_Account extends Account {
         super(balance, currency, type, owners, savingsInterest);
     }
 
-    double savingsRate;
 }

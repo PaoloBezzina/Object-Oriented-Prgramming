@@ -9,8 +9,21 @@ public class Banking_System {
     ArrayList<Card> cards = new ArrayList<Card>();
     boolean disabled; // for bank holidays
 
-    // ----// TODO addNewPerson(String id, String name, String surname, String
-    // title, String role, String gender): void
+    public void addNewPerson(String id, String name, String surname, String title, String role, String gender) {
+        Regular_User person = new Regular_User(id, name, surname, title, role, gender); // Creating a new object
+        this.regularUsers.add(person); // Adding it to the list
+    }
+
+    // public void addAccount(int, int, int[], int, double, String, String){
+    public void initAccount(double balance, String currency, boolean type, ArrayList<Account_Holder> owners) {
+        Account account = new Account(balance, currency, type, owners);
+        addAccount(account);
+    }
+
+    public void addAccount(Account account) {
+        this.accounts.add(account);
+    }
+
     // TODO addAccount(int, int, int[], int, double, String, String): void
     // TODO displayAll(String): void
     // TODO checkIdNo(int, String): void
@@ -28,25 +41,5 @@ public class Banking_System {
     // TODO viewAccHolAction(int, int, String): void
     // TODO ATM(int, int, String, double): void
     // TODO moveMoney(int, int, int, double): void
-    // TODO cont.....
-
-    public void addNewPerson(String id, String name, String surname, String title, String role, String gender) {
-        Regular_User person = new Regular_User(id, name, surname, title, role, gender); // Creating a new object
-        this.regularUsers.add(person); // Adding it to the list
-    }
-
-    // public void addAccount(int, int, int[], int, double, String, String){
-    public void initAccount(double balance, String currency, boolean type, ArrayList<Account_Holder> owners) {
-        Account account = new Account(balance, currency, type, owners);
-        addAccount(account);
-    }
-
-    public void addAccount(Account account) {
-        this.accounts.add(account);
-    }
-
-    public void getAccount(int accountId){
-        
-    }
 
 }
