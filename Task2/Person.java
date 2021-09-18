@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class Person {
 
     // int no;
-    String id;
-    String name;
-    String surname;
-    String title;
-    String role;
-    String gender;
-    ArrayList<String> actions = new ArrayList<String>();
+    private String id;
+    private String name;
+    private String surname;
+    private String title;
+    private String role;
+    private String gender;
+    protected ArrayList<String> actions = new ArrayList<String>();
 
     // constructor
     public Person(String id, String name, String surname, String title, String role, String gender) {

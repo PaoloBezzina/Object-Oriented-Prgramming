@@ -6,13 +6,13 @@ import java.text.SimpleDateFormat;
 
 public class Card {
 
-    String cardNo;
-    Account account;
-    String ownerName;
-    Account_Holder owner;
-    int cvv;
-    String expiryDateString;
-    Date expiryDate;
+    private String cardNo;
+    private Account account;
+    private String ownerName;
+    private Account_Holder owner;
+    private int cvv;
+    private String expiryDateString;
+    private Date expiryDate;
 
     public Card(Account acc, String name) {
         DateFormat dateFormat = new SimpleDateFormat("yy-mm");

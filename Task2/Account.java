@@ -6,13 +6,13 @@ import java.util.Map;
 
 public class Account {
 
-    int accNo;
-    double balance;
-    boolean type; // t for current, f for savings
-    float interest;
-    String currency;
-    ArrayList<Account_Holder> owners = new ArrayList<Account_Holder>();
-    ArrayList<Card> bankCards = new ArrayList<Card>();
+    private int accNo;
+    private double balance;
+    private boolean type; // t for current, f for savings
+    private float interest;
+    private String currency;
+    protected ArrayList<Account_Holder> owners = new ArrayList<Account_Holder>();
+    protected ArrayList<Card> bankCards = new ArrayList<Card>();
 
     public static Map<String, Double> currencies = new HashMap<String, Double>();
     static {

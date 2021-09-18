@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class Banking_System {
 
-    ArrayList<Regular_User> regularUsers = new ArrayList<Regular_User>();
-    ArrayList<Administrator> admins = new ArrayList<Administrator>();
-    ArrayList<Account_Holder> accountHolders = new ArrayList<Account_Holder>();
-    ArrayList<Account> accounts = new ArrayList<Account>();
-    ArrayList<Card> cards = new ArrayList<Card>();
-    boolean disabled; // for bank holidays
+    protected ArrayList<Regular_User> regularUsers = new ArrayList<Regular_User>();
+    protected ArrayList<Administrator> admins = new ArrayList<Administrator>();
+    protected ArrayList<Account_Holder> accountHolders = new ArrayList<Account_Holder>();
+    protected ArrayList<Account> accounts = new ArrayList<Account>();
+    protected ArrayList<Card> cards = new ArrayList<Card>();
+    private boolean disabled; // for bank holidays
 
     public void addNewPerson(String id, String name, String surname, String title, String role, String gender) {
         Regular_User person = new Regular_User(id, name, surname, title, role, gender); // Creating a new object

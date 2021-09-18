@@ -1,6 +1,6 @@
 public abstract class Request {
 
-    boolean approved = false;
-    String requestedBy;
-    String approvedBy;
+    protected boolean approved = false;
+    protected String requestedBy;
+    protected String approvedBy;
 }
