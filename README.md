@@ -11,6 +11,7 @@ Intermediate nodes will have four children which represent the next (recursive) 
 The images represented as regional quadtrees are stored in text files. There are two different formats supported, a textual
 format including a grid of T or F values, as well a CSV format, including the coordinates for 'white' values.
 
+
 Task 2:
 An internet banking platform is a facility where bank account holders can view, move money, i.e. transact and add/remove instructions to their accounts.
 There are two kinds of accounts: savings and current accounts.
@@ -24,6 +25,7 @@ The system was also built in such a way for it to facilitate future changes such
 * Audit trails - every action by a user needs to produce a lognso that any fraudulent activity can be investigated by competent authorities and scenarios recreated.
 * Bank holidays: Disable functionality such as moving money whenever there is a bank holiday.
 
+
 Task 3:
 MyUint is a templated integer library that supports integers, from 1-bit to 2048-bits.
 This library only supports unsigned integers with 2^n bits. A compilation error is emitted if the user tries to use an arbitrary length integer.
@@ -35,6 +37,7 @@ All generic integer operations were overwitten to be supported by the myuint lib
 * Modulus
 * Left and Right Binary Shifts
 * Greater Than, Less Than and Equal To
+
 
 ### Dependencies (not limited to)
 
