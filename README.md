@@ -50,3 +50,4 @@ Each Task has its own seperate 'run.sh' file. This can be run to execute each of
 ```
 bash run.sh
 ```
+_Note that for Task 2, no runner script has been implemented
