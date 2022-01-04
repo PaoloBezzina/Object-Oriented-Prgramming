@@ -46,8 +46,8 @@ All generic integer operations were overwitten to be supported by the myuint lib
 * C++ 9.3.0
 
 ### Executing program
-Each Task has its own seperate 'run.sh' file. This can be run to execute each of the task using an integrated terminal.
+Each Task has its own seperate 'run.sh' file. This can be run to execute each of the tasks* using an integrated terminal.
 ```
 bash run.sh
 ```
-<sub>Note that for Task 2, no runner script has been implemented</sub>
+<sub>*Note that for Task 2, no runner script has been implemented</sub>
